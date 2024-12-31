@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入</title>
+    <style>
+        /* 設定頁面整體的字型、邊距、內邊距以及背景顏色 */
+        body {
+            font-family: Arial, sans-serif; /* 設定字體 */
+            margin: 0; /* 移除頁面邊距 */
+            padding: 0; /* 移除頁面內邊距 */
+            background-color: #f7f7f7; /* 淺灰背景 */
+            display: flex; /* 使用彈性盒模型 */
+            justify-content: center; /* 水平方向置中 */
+            align-items: center; /* 垂直方向置中 */
+            height: 100vh; /* 設定頁面高度為視口高度 */
+            color: #333;
+        }
+
+        /* 設定 logo 的左邊距 */
+        .logo {
+            margin-left: 10px;
+        }
+
+        /* 標頭樣式 */
+        .header1 {
+            position: fixed; /* 固定在頁面上方 */
+            width: 100%; /* 寬度占滿整個頁面 */
+            top: 0; /* 靠上對齊 */
+            background-color: #b6a290; /* 設定標頭背景顏色為棕灰色 */
+            padding: 5px; /* 設定上下內邊距為 5px */
+            display: flex; /* 使用彈性盒模型對齊內容 */
+            justify-content: space-between; /* 標頭內容兩側對齊 */
+            align-items: center; /* 垂直方向置中對齊 */
+        }
+
+        /* 標頭中導航連結的樣式 */
+        .header1 nav a {
+            margin: 0 10px; /* 設定連結的左右外邊距為 10px */
+            text-decoration: none; /* 移除文字底線 */
+            color: #333; /* 設定文字顏色為深灰色 */
+            font-size: 20px; /* 設定字體大小 */
+        }
+
+        /* 設定登入表單容器的樣式 */
+        .login-container {
+            background-color: #fff; /* 設定背景顏色為白色 */
+            border: 1px solid #ddd; /* 設定邊框顏色 */
+            border-radius: 5px; /* 設定圓角 */
+            width: 400px; /* 設定容器寬度 */
+            padding: 20px; /* 設定內邊距 */
+            border-radius: 8px; /* 圓角 */
+        }
+
+        /* 設定登入標題的樣式 */
+        .login-container h1 {
+            text-align: center; /* 標題置中 */
+            font-size: 25px; /* 設定字體大小 */
+            margin-bottom: 20px; /* 底部外邊距 */
+        }
+
+        /* 設定登入表單的排列方式 */
+        .login-container form {
+            display: flex; /* 使用彈性盒模型 */
+            flex-direction: column; /* 使表單內容垂直排列 */
+        }
+
+        /* 設定表單標籤的樣式 */
+        .login-container label {
+            font-size: 20px; /* 設定字體大小 */
+            margin-bottom: 5px; /* 底部外邊距 */
+        }
+
+        /* 設定輸入框的樣式 */
+        .login-container input {
+            padding: 10px; /* 設定內邊距 */
+            font-size: 20px; /* 設定字體大小 */
+            margin-bottom: 15px; /* 底部外邊距 */
+            border: 1px solid #ccc; /* 設定邊框顏色 */
+            border-radius: 8px; /* 設定圓角 */
+        }
+
+        /* 設定登入按鈕的樣式 */
+        .login-container button {
+            background-color: #b6a290; /* 設定按鈕背景顏色 */
+            color: white; /* 設定文字顏色為白色 */
+            font-size: 20px; /* 設定字體大小 */
+            padding: 10px; /* 設定內邊距 */
+            border: none; /* 移除邊框 */
+            border-radius: 8px; /* 設定圓角 */
+            cursor: pointer; /* 滑鼠懸停時顯示指針 */
+            margin-top: 20px; /* 頂部外邊距 */
+        }
+
+        /* 設定登入按鈕的懸停效果 */
+        .login-container button:hover {
+            background-color: #836c59; /* 改變按鈕背景顏色 */
+        }
+
+        /* 設定註冊頁面底部註冊連結的樣式 */
+        .login-container .register-link {
+            text-align: center; /* 文字置中 */
+            margin-top: 20px; /* 頂部外邊距 */
+        }
+
+        /* 設定註冊連結的樣式 */
+        .login-container .register-link a {
+            color: #4879ff; /* 設定文字顏色 */
+            text-decoration: none; /* 移除底線 */
+        }
+
+        /* 設定註冊連結的懸停效果 */
+        .login-container .register-link a:hover {
+            text-decoration: underline; /* 懸停時顯示底線 */
+        }
+        
+        .register-link {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 第一個 Header -->
+    <header class="header1">
+        <h1 class="logo">小說購物網</h1> <!-- 顯示網站的標題 -->
+        <nav class="nav-bar">
+            <a href="index.html">首頁</a>
+            <a href="register.html">會員註冊</a>
+            <a href="login.html">會員登入</a>
+            <a href="shopping_cart.html">購物車</a>
+            <a href="profile.html">會員中心</a>
+        </nav>
+    </header>
+
+    <!-- 登入表單容器 -->
+    <div class="login-container">
+        <h1>會員登入</h1> <!-- 顯示登入標題 -->
+        <form id="login-form">
+            <!-- 帳號輸入欄位 -->
+            <label for="username">帳號</label>
+            <input type="text" id="username" name="username" placeholder="輸入帳號" required>
+
+            <!-- 密碼輸入欄位 -->
+            <label for="password">密碼</label>
+            <input type="password" id="password" name="password" placeholder="輸入密碼" required>
+
+            <!-- 登入按鈕 -->
+            <button type="submit">登入</button>
+        </form>
+
+        <!-- 註冊連結 -->
+        <div class="register-link">
+            還沒有帳號？<a href="register.html">立即註冊</a>
+        </div>
+        
+        <!-- 錯誤訊息顯示區 -->
+        <p class="error-message" id="errorMessage"></p>
+    </div>
+
+    <script>
+        // 監聽登入表單提交事件
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // 從 localStorage 取得已註冊的帳號和密碼
+            const userData = JSON.parse(localStorage.getItem('userData'));
+
+            // 如果 localStorage 沒有數據，提示註冊
+            if (!userData) {
+                alert('尚未註冊，請先註冊！');
+                window.location.href = 'register.html';
+                return;
+            }
+
+            // 驗證帳號和密碼
+            if (username === userData.username && password === userData.password) {
+                alert('登入成功！');
+                window.location.href = 'index.html'; // 跳轉到首頁
+            } else {
+                alert('帳號或密碼錯誤，請再試一次！');
+            }
+        });
+    </script>
+</body>
+</html>

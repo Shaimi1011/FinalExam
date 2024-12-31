@@ -1,0 +1,260 @@
+/* 設定網頁的基本字體及背景顏色 */
+body {
+    font-family: Arial, sans-serif; /* 預設字體為 Arial，無法使用時切換為 sans-serif */
+    margin: 0; /* 移除頁面預設外邊距 */
+    padding: 0; /* 移除頁面預設內邊距 */
+    background-color: #fffbf4; /* 設定網頁背景顏色為米黃色 */
+    color: #333;
+}
+
+/* 標頭樣式 */
+header {
+    background-color: #b6a290; /* 設定標頭背景顏色為棕灰色 */
+    padding: 5px; /* 設定上下內邊距為 20px */
+    display: flex; /* 使用彈性盒模型對齊內容 */
+    justify-content: space-between; /* 標頭內容兩側對齊 */
+    align-items: center; /* 垂直方向置中對齊 */
+}
+
+/* 標頭中導航連結的樣式 */
+header nav a {
+    margin: 0 10px; /* 設定連結的左右外邊距為 10px */
+    text-decoration: none; /* 移除文字底線 */
+    color: #333; /* 設定文字顏色為深灰色 */
+    font-size: 20px;
+}
+
+.logo {
+    margin-left: 10px;
+}
+
+#welcome-message {
+    font-size: 50px;
+    align-items: center;
+}
+
+/* 設定主要內容區域的網格佈局 */
+.container {
+    display: grid; /* 使用 CSS Grid 定義佈局 */
+    grid-template-columns: 2fr 3fr; /* 設定左欄與右欄的寬度比例為 2:3 */
+    gap: 20px; /* 設定網格單元格之間的間距為 */
+    padding: 20px;  /* 上、右、左都為 20px，底部為 0 */
+}
+
+/* 左側欄位樣式 */
+.left-column {
+    display: grid; /* 使用 CSS Grid 定義左側欄內部的佈局 */
+    gap: 20px; /* 設定上下部分的間距為 20px */
+}
+
+/* 設定右欄的容器，使其內部內容水平排列 */
+.right-column {
+    display: flex; /* 使用 Flexbox 排列內容 */
+    flex-direction: column; /* 設定內容垂直排列 */
+    justify-content: space-between; /* 左右對齊 */
+    gap: 20px; /* 設定區域間的垂直間距 */
+}
+
+.container h2 {
+    text-align: center;
+}
+
+/* 熱門排行榜輪播容器樣式 */
+.slideshow-container {
+    max-width: 80%; /* 設定寬度為容器的 100% */
+    position: relative; /* 設定相對定位，方便控制內部按鈕 */
+    margin: auto; /* 置中容器 */
+    border-radius: 8px; /* 設定圓角 */
+}
+
+/* 單張圖片樣式 */
+.mySlides {
+    display: none; /* 預設隱藏所有圖片 */
+}
+
+.mySlides img {
+    max-width: 80%; /* 圖片最大寬度設定為容器寬度的 80% */
+    height: auto; /* 保持圖片比例 */
+    margin: 0 auto; /* 置中圖片 */
+    display: block; /* 確保圖片在容器中置中顯示 */
+    border-radius: 8px; /* 保持圓角樣式 */
+}
+
+/* 左右按鈕樣式 */
+.prev, .next {
+    cursor: pointer; /* 鼠標樣式 */
+    position: absolute; /* 絕對定位 */
+    top: 50%; /* 垂直居中 */
+    transform: translateY(-50%); /* 修正垂直位置 */
+    width: 70px; /* 設定按鈕寬度 */
+    height: 70px; /* 設定按鈕高度 */
+    border-radius: 100%; /* 讓按鈕成為正圓形 */
+    background-color: rgba(67, 50, 41, 0.5); /* 半透明背景 */
+    color: white; /* 按鈕文字顏色 */
+    font-size: 30px; /* 按鈕文字大小 */
+    border: none; /* 移除邊框 */
+    display: flex; /* 使用彈性盒模型 */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    transition: background-color 0.3s ease; /* 背景變化動畫 */
+}
+
+.prev {
+    left: -30px; /* 按鈕距離左側20px */
+}
+
+.next {
+    right: -30px; /* 按鈕距離右側20px */
+}
+
+/* 按鈕懸停效果 */
+.prev:hover, .next:hover {
+    background-color: rgba(61, 46, 37, 0.800); /* 深色背景 */
+}
+
+/* 圓點指示器樣式 */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 10px 5px; /* 圓點間距 */
+    background-color: #bbb; /* 預設灰色 */
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease; /* 平滑過渡 */
+}
+
+.active, .dot:hover {
+    background-color: #717171; /* 活躍或懸停時變深色 */
+}
+
+/* 淡入淡出動畫 */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* 排行榜與活動區塊的樣式 */
+.ranking {
+    background-color: #d8ccc0; /* 設定背景顏色為淺棕色 */
+    padding: 20px; /* 設定內邊距為 20px */
+    border-radius: 8px; /* 設定圓角半徑為 8px */
+}
+
+/* 活動區塊的樣式 */
+.activity {
+    width: 100%; /* 設定活動區塊的寬度為 100%（填滿父元素的寬度） */
+    max-width: 800px; /* 設定最大寬度為 800px，防止區塊過寬 */
+    margin: 10px auto; /* 設定上下外邊距為 20px，並讓區塊在水平方向置中 */
+    text-align: center; /* 設定文字居中對齊 */
+}
+
+/* 滾動圖片輪播區域的樣式 */
+.carousel {
+    display: flex; /* 使用彈性盒模型排列內容 */
+    align-items: center; /* 垂直方向置中對齊內容 */
+    overflow: hidden; /* 隱藏超出容器的部分 */
+    position: relative; /* 設定相對定位，為內部元素提供定位參考 */
+}
+
+/* 滾動區域內部圖片的排列樣式 */
+.carousel .carousel-track {
+    display: flex; /* 使用彈性盒模型排列圖片 */
+    transition: transform 1s ease-in-out; /* 設定圖片切換的動畫效果 */
+    transform: translateX(0%); /*只顯示第一張，而其他的圖片隱藏*/
+    width: 100%;
+}
+
+/* 圖片樣式 */
+.carousel img {
+    display: block; /* 使用彈性盒模型排列圖片，讓圖片並排顯示 */
+    width: 100%; /* 設定圖片寬度填滿容器 */
+    height: auto; /* 設定圖片高度自適應比例 */
+    border-radius: 8px; /* 設定圖片圓角半徑為 8px */
+    flex-shrink: 0; /* 防止圖片在容器縮放時縮小，保持固定比例 */
+}
+
+/* 確保活動廣告部分每次只顯示一張圖片 */
+.carousel-item {
+    display: none; /* 預設隱藏所有圖片 */
+}
+
+.carousel-item:first-child {
+    display: block; /* 預設顯示第一張圖片 */
+}
+
+/* 右欄中的每個區域（例如高分完結和私人推薦） */
+.book-section {
+    display: flex; /* 使用 Flexbox 進行排列 */
+    flex-direction: column; /* 水平方向排列內容 */
+    gap: 20px; /* 書籍區域內的間距 */
+    margin-bottom: 20px; /* 設定區域下方的外邊距為 20px */
+    width: 100%; /* 確保區域寬度填滿容器 */
+}
+
+/* 書籍區域標題的樣式 */
+.book-section h2 {
+    width: 100%; /* 讓標題佔滿整個區域 */
+    text-align: center; /* 標題文字置中對齊 */
+    margin-bottom: 10px; /* 設定標題下方的外邊距 */
+}
+
+/* 書籍卡片樣式 */
+.book {
+    flex: 0 0 calc(20% - 10px); /* 每本書寬度約佔 20% 減去間距 */
+    box-sizing: border-box; /* 確保 padding 和 border 不影響寬度計算 */
+    text-align: center; /* 文字置中對齊 */
+    background-color: #f8f8f8; /* 卡片背景色 */
+    border-radius: 8px; /* 圓角 */
+    overflow: hidden; /* 防止溢出 */
+    transition: transform 0.3s ease; /* 加入鼠標懸停時的效果 */
+    text-decoration: none; /* 移除鏈接的預設下劃線 */
+    color: inherit; /* 繼承父層的字體顏色 */
+    margin-right: 10px;
+}
+
+.book:hover {
+    transform: scale(1.05); /* 鼠標懸停時放大效果 */
+}
+
+/* 書籍封面圖片的樣式 */
+.book img {
+    width: 100%; /* 圖片寬度填滿卡片 */
+    height: auto; /* 圖片高度按比例調整 */
+    border-radius: 8px 8px 0 0; /* 只在上方應用圓角 */
+}
+
+/* 書籍詳細資料的樣式 */
+.book-details {
+    padding: 10px; /* 內邊距 */
+    font-size: 20px; /* 字體大小 */
+    background-color: #fff; /* 背景為白色 */
+    text-align: left;
+}
+
+/* 書籍名稱、作者與價格的樣式 */
+.book-details p {
+    margin: 5px 0; /* 設定段落的上下外邊距 */
+    color: #333; /* 字體顏色 */
+}
+
+/* Footer 整體樣式 */
+.site-footer {
+    display: grid;  /* 使用 grid 佈局來設計底部結構 */
+    background-color: #d7bca4; /* 設定底部背景顏色為淺棕色 */
+}
+
+
+/* 底部版權聲明樣式 */
+.footer-bottom {
+    justify-content: center;  /* 水平置中內容 */
+    align-items: center;  /* 垂直置中內容 */
+    text-align: center;  /* 文字水平置中對齊 */
+    color: #3a2d24; /* 設定底部文字顏色為深棕色 */
+    font-size: 20px; /* 設定文字的字型大小為 20px */
+}

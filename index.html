@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小說購物網</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 頁首 -->
+    <header class="header">
+        <h1 class="logo">小說購物網</h1>
+        <nav class="nav-bar">
+            <a href="index.html">首頁</a>
+            <a href="register.html">會員註冊</a>
+            <a href="login.html">會員登入</a>
+            <a href="shopping_cart.html">購物車</a>
+            <a href="profile.html">會員中心</a>
+        </nav>
+    </header>
+        <div class="container">
+            <div class="left-column">
+                <div class="ranking">
+                    <h2>熱門排行榜</h2>
+                    <div class="slideshow-container">
+                        <div class="mySlides fade">
+                            <a href="book/H1.html">
+                                <img src="img/hot1.jpg" style="width:100%">
+                            </a>    
+                        </div>
+                        <div class="mySlides fade">
+                            <a href="book/H2.html">
+                                <img src="img/hot2.jpg" style="width:100%">
+                            </a>    
+                        </div>
+                        <div class="mySlides fade">
+                            <a href="book/H3.html">
+                                <img src="img/hot3.jpg" style="width:100%">
+                            </a>
+                        </div>
+                        <!-- 左右按鈕 -->
+                        <div class="prev" onclick="plusSlides(-1)">&#10094;</div>
+                        <div class="next" onclick="plusSlides(1)">&#10095;</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <span class="dot" onclick="currentSlide(0)"></span>
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                    </div>
+                </div>
+                <div class="activity">
+                    <div class="carousel">
+                        <div class="carousel-track" id="activity-track">
+                            <div class="carousel-item fade">
+                                    <img src="img/ad1.png" alt="廣告1">
+                            </div>
+                            <div class="carousel-item fade">
+                                <a href="https://www.jjwxc.net/" target="_blank">
+                                    <img src="img/ad2.png" alt="廣告2">
+                                </a>
+                            </div>
+                            <div class="carousel-item fade">
+                                <a href="https://www.gongzicp.com/" target="_blank">
+                                    <img src="img/ad3.png" alt="廣告3">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="ad-banner">
+                    <a href="https://www.playstation.com/zh-hant-tw/ps5/" target="_blank">
+                        <img src="img/ad4.png" alt="橫條廣告" style="width: 100%; border-radius: 8px;">
+                    </a>
+                </div>
+                <div class="book-section">
+                    <h2>高分完結</h2>
+                    <div class="carousel">
+                        <div class="carousel-track" id="new-books">
+                            <a href="book/T1.html" class="book">
+                                <img src="img/h1.jpg" alt="Book Cover 1">
+                                <div class="book-details">
+                                    <p>書名:某某</p>
+                                    <p>作者:木蘇里</p>
+                                    <p>價格:$300</p>
+                                </div>
+                            </a>
+                            <a href="book/T2.html" class="book">
+                                <img src="img/h2.jpg" alt="Book Cover 2">
+                                <div class="book-details">
+                                    <p>書名:營業悖論</p>
+                                    <p>作者:稚楚</p>
+                                    <p>價格:$300</p>
+                                </div>
+                            </a>
+                            <a href="book/T3.html" class="book">
+                                <img src="img/h3.jpg" alt="Book Cover 3">
+                                <div class="book-details">
+                                    <p>書名:撒野</p>
+                                    <p>作者:巫哲</p>
+                                    <p>價格:$300</p>
+                                </div>
+                            </a>
+                            <a href="book/T4.html" class="book">
+                                <img src="img/h4.jpg" alt="Book Cover 4">
+                                <div class="book-details">
+                                    <p>書名:偽裝學渣</p>
+                                    <p>作者:木瓜黃</p>
+                                    <p>價格:$300</p>
+                                </div>
+                            </a>
+                            <a href="book/T5.html" class="book">
+                                <img src="img/h5.jpg" alt="Book Cover 5">
+                                <div class="book-details">
+                                    <p>書名:烈火澆愁</p>
+                                    <p>作者:priest</p>
+                                    <p>價格:$200</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="book-section">
+                    <h2>私人推薦</h2>
+                    <div class="carousel">
+                        <div class="carousel-track" id="new-books">
+                            <a href="book/M1.html" class="book">
+                                <img src="img/m1.jpg" alt="Book Cover 1">
+                                <div class="book-details">
+                                    <p>書名:殺戮秀</p>
+                                    <p>作者:狐狸</p>
+                                    <p>價格:$360</p>
+                                </div>
+                            </a>
+                            <a href="book/M2.html" class="book">
+                                <img src="img/m2.jpg" alt="Book Cover 2">
+                                <div class="book-details">
+                                    <p>書名:人魚陷落</p>
+                                    <p>作者:麟潛</p>
+                                    <p>價格:$300</p>
+                                </div>
+                            </a>
+                            <a href="book/M3.html" class="book">
+                                <img src="img/m3.jpg" alt="Book Cover 3">
+                                <div class="book-details">
+                                    <p>書名:將進酒</p>
+                                    <p>作者:唐酒卿</p>
+                                    <p>價格:$350</p>
+                                </div>
+                            </a>
+                            <a href="book/M4.html" class="book">
+                                <img src="img/m4.jpg" alt="Book Cover 4">
+                                <div class="book-details">
+                                    <p>書名:犯罪心理</p>
+                                    <p>作者:長洱</p>
+                                    <p>價格:$200</p>
+                                </div>
+                            </a>
+                            <a href="book/M5.html" class="book">
+                                <img src="img/m5.jpg" alt="Book Cover 5">
+                                <div class="book-details">
+                                    <p>書名:萬有引力</p>
+                                    <p>作者:騎鯨南去</p>
+                                    <p>價格:$360</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; 小說購物網站. 保留所有權利。</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

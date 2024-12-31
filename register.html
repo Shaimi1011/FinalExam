@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊</title>
+    <style>
+        /* 設定頁面整體的字型、邊距、內邊距以及背景顏色 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7; /* 淺灰背景 */
+            display: flex; /* 使用彈性盒模型 */
+            justify-content: center; /* 水平方向置中 */
+            align-items: center; /* 垂直方向置中 */
+            height: 100vh; /* 設置頁面高度為視口高度 */
+            color: #333;
+        }
+
+        /* 設定 logo 的左邊距 */
+        .logo {
+            margin-left: 10px;
+        }
+
+        /* 標頭樣式 */
+        .header1 {
+            position: fixed; /* 固定在頁面上方 */
+            width: 100%; /* 宽度占满整个页面 */
+            top: 0; /* 靠上對齊 */
+            background-color: #b6a290; /* 設定標頭背景顏色為棕灰色 */
+            padding: 5px; /* 設定上下內邊距為 5px */
+            display: flex; /* 使用彈性盒模型對齊內容 */
+            justify-content: space-between; /* 標頭內容兩側對齊 */
+            align-items: center; /* 垂直方向置中對齊 */
+        }
+
+        /* 標頭中導航連結的樣式 */
+        .header1 nav a {
+            margin: 0 10px; /* 設定連結的左右外邊距為 10px */
+            text-decoration: none; /* 移除文字底線 */
+            color: #333; /* 設定文字顏色為深灰色 */
+            font-size: 20px; /* 設定字體大小 */
+        }
+
+        /* 註冊表單區塊的樣式 */
+        .signup-container {
+            background-color: #fff; /* 設定背景顏色為白色 */
+            border: 1px solid #ddd; /* 設定邊框顏色 */
+            border-radius: 5px; /* 設定圓角 */
+            width: 400px; /* 設定容器寬度 */
+            padding: 20px; /* 設定內邊距 */
+            border-radius: 8px; /* 圓角 */
+        }
+
+        /* 註冊標題的樣式 */
+        .signup-container h1 {
+            text-align: center; /* 標題置中 */
+            font-size: 25px; /* 字體大小 */
+            margin-bottom: 20px; /* 底部外邊距 */
+        }
+
+        /* 註冊表單的排列方式 */
+        .signup-container form {
+            display: flex; /* 使用彈性盒模型 */
+            flex-direction: column; /* 使表單內容垂直排列 */
+        }
+
+        /* 註冊表單中標籤的樣式 */
+        .signup-container label {
+            font-size: 20px; /* 字體大小 */
+            margin-bottom: 5px; /* 底部外邊距 */
+        }
+
+        /* 註冊表單中輸入框的樣式 */
+        .signup-container input {
+            padding: 10px; /* 內邊距 */
+            font-size: 20px; /* 字體大小 */
+            margin-bottom: 15px; /* 底部外邊距 */
+            border: 1px solid #ccc; /* 邊框顏色 */
+            border-radius: 8px; /* 圓角 */
+        }
+
+        /* 註冊按鈕的樣式 */
+        .signup-container button {
+            background-color: #b6a290; /* 按鈕背景顏色 */
+            color: white; /* 文字顏色 */
+            font-size: 20px; /* 字體大小 */
+            padding: 10px; /* 內邊距 */
+            border: none; /* 移除邊框 */
+            border-radius: 8px; /* 圓角 */
+            cursor: pointer; /* 滑鼠懸停時顯示指針 */
+            margin-top: 20px; /* 頂部外邊距 */
+        }
+
+        /* 註冊按鈕的懸停效果 */
+        .signup-container button:hover {
+            background-color: #836c59; /* 改變背景顏色 */
+        }
+
+        /* 註冊頁面底部登入連結的樣式 */
+        .signup-container .login-link {
+            text-align: center; /* 文字置中 */
+            margin-top: 20px; /* 頂部外邊距 */
+        }
+
+        /* 註冊頁面底部登入連結的樣式 */
+        .signup-container .login-link a {  
+            color: #4879ff;
+            text-decoration: none; /* 移除底線 */
+        }
+
+        /* 註冊頁面底部登入連結的懸停效果 */
+        .signup-container .login-link a:hover {
+            text-decoration: underline; /* 懸停時顯示底線 */
+        }
+
+        .login-link {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 第一個 Header -->
+    <header class="header1">
+        <h1 class="logo">小說購物網</h1> <!-- 顯示網站的標題 -->
+        <nav class="nav-bar">
+            <a href="index.html">首頁</a>
+            <a href="register.html">會員註冊</a>
+            <a href="login.html">會員登入</a>
+            <a href="shopping_cart.html">購物車</a>
+            <a href="profile.html">會員中心</a>
+        </nav>
+    </header>
+
+    <!-- 註冊表單容器 -->
+    <div class="signup-container">
+        <h1>會員註冊</h1> <!-- 顯示註冊標題 -->
+        <form id="register-form" method="post">
+            <!-- 帳號輸入欄位 -->
+            <label for="username">帳號</label>
+            <input type="text" id="username" name="username" placeholder="輸入帳號" required>
+
+            <!-- 密碼輸入欄位 -->
+            <label for="password">密碼</label>
+            <input type="password" id="password" name="password" placeholder="輸入密碼" required>
+
+            <!-- 確認密碼輸入欄位 -->
+            <label for="confirm-password">確認密碼</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="再次輸入密碼" required>
+
+            <!-- 提交註冊按鈕 -->
+            <button type="submit">註冊</button>
+        </form>
+        <!-- 註冊頁面底部登入連結 -->
+        <div class="login-link">
+            已有帳號？<a href="login.html">立即登入</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // 防止表單自動提交
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // 檢查密碼是否一致
+            if (password !== confirmPassword) {
+                alert('密碼與確認密碼不一致！');
+                return;
+            }
+
+            // 儲存使用者資料到 localStorage
+            const userData = { username, password };
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            alert('註冊成功！請登入。');
+            window.location.href = 'login.html'; // 跳轉到登入頁面
+        });
+    </script>
+</body>
+</html>

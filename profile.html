@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員中心</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* 設定整體背景與字型樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fffbf4; /* 背景為淺米色 */
+            color: #333;
+        }
+
+        /* 頁首第一區塊樣式 */
+        .header1 {
+            background-color: #b6a290; /* 深米色背景 */
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 頁首導覽連結樣式 */
+        .header1 nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333; /* 字體顏色為深灰 */
+            font-size: 20px;
+        }
+
+        /* 第一頁首的網站名稱位置 */
+        .logo {
+            margin-left: 10px;
+        }
+
+        /* 頁首第二區塊樣式 */
+        .header2 {
+            background-color: #e2d3c7; /* 米白色背景 */
+            color: #4a3c31; /* 深咖啡色文字 */
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* 頁首第二區塊文字樣式 */
+        .header2 h1 {
+            margin: 0;
+        }
+
+        /* 容器樣式，限制寬度與增加陰影效果 */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff; /* 白色背景 */
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+        }
+
+        /* 個人資料區塊樣式 */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        /* 頭像圖片樣式 */
+        .profile-section img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* 圓形圖片 */
+            margin-right: 20px;
+            background-color: #c5c5c5; /* 預設灰色背景 */
+            cursor: pointer; /* 滑鼠移動到圖片變成可點擊狀態 */
+        }
+
+        /* 隱藏檔案上傳按鈕 */
+        #file-upload {
+            display: none;
+        }
+
+        /* 個人資訊區域樣式 */
+        .profile-section .info {
+            flex: 1;
+        }
+
+        /* 個人資訊標題與段落樣式 */
+        .profile-section .info h2,
+        .profile-section .info p {
+            margin: 5px 0;
+        }
+
+        /* 可編輯區塊的預設隱藏樣式 */
+        .editable {
+            display: none;
+            font-size: 20px;
+            border-radius: 8px;
+            border: 1px solid #666;  /* 灰色邊框，細1px */
+        }
+
+        /* 設定會員名稱輸入框的樣式 */
+        #name-input {
+            font-size: 30px; /* 可編輯狀態下的會員名稱字體大小 */
+        }
+
+        /* 功能按鈕區域樣式 */
+        .member-actions {
+            display: flex; /* 使用彈性盒模型來排列按鈕 */
+            justify-content: space-between; /* 按鈕分佈在容器的左右兩側 */
+            gap: 15px; /* 按鈕之間的間距 */
+        }
+
+        /* 功能按鈕樣式 */
+        .member-actions a {
+            flex: 1; /* 讓按鈕自動填滿可用空間，確保寬度一致 */
+            text-decoration: none; /* 移除超連結的預設底線 */
+            color: white; /* 設定按鈕文字顏色為白色 */
+            background-color: #b6a290; /* 設定按鈕背景色為深米色 */
+            padding: 10px; /* 按鈕內部的上下左右填充為 10px */
+            border-radius: 8px; /* 將按鈕的邊角設為圓角，半徑為 8px */
+            text-align: center; /* 文字內容居中對齊 */
+            font-size: 20px; /* 設定按鈕文字大小為 20px */
+            max-width: 48%; /* 限制按鈕的最大寬度為容器的 48% */
+            margin: 0 10px; /* 每個按鈕左右增加額外間距，保持分隔感 */
+        }
+
+        /* 功能按鈕的懸停樣式 */
+        .member-actions a:hover {
+            background-color: #836c59; /* 加深背景顏色 */
+        }
+
+        /* 頁尾樣式 */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666; /* 灰色文字 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁首區域 -->
+    <header class="header1">
+        <h1 class="logo">小說購物網</h1>
+        <nav class="nav-bar">
+            <a href="index.html">首頁</a>
+            <a href="register.html">會員註冊</a>
+            <a href="login.html">會員登入</a>
+            <a href="shopping_cart.html">購物車</a>
+            <a href="profile.html">會員中心</a>
+        </nav>
+    </header>
+
+    <!-- 第二頁首區域 -->
+    <header class="header2">
+        <h1>會員中心</h1>
+    </header>
+
+    <!-- 主內容區域 -->
+    <div class="container">
+        <!-- 個人資訊區塊 -->
+        <div class="profile-section">
+            <!-- 頭像圖片 -->
+            <img id="profile-img" alt="" onclick="document.getElementById('file-upload').click()">
+            <!-- 隱藏的檔案上傳按鈕 -->
+            <input type="file" id="file-upload" accept="image/*" onchange="previewImage(event)">
+            <div class="info">
+                <!-- 名稱顯示與編輯框 -->
+                <h2>
+                    <span id="name-display">會員名稱</span>
+                    <input id="name-input" class="editable" type="text" value="會員名稱">
+                </h2>
+                <!-- 性別顯示與下拉選單 -->
+                <p>
+                    性別：
+                    <span id="gender-display">男</span>
+                    <select id="gender-select" class="editable">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </p>
+                <!-- 生日顯示與編輯框 -->
+                <p>
+                    生日：
+                    <span id="birthday-display">2000/01/01</span>
+                    <input id="birthday-input" class="editable" type="date" value="1990-01-01">
+                </p>
+                <!-- 其他資訊 -->
+                <p>會員帳號：<span id="displayUsername">00000000</span></p>
+                <p>註冊日期：<span id="register-date"></span></p>
+            </div>
+        </div>
+
+        <!-- 功能按鈕 -->
+        <div class="member-actions">
+            <a href="login.html" id="logout-button">登出</a>
+            <a href="javascript:void(0)" id="edit-button" onclick="toggleEditMode()">編輯資料</a>
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        &copy; 小說購物網站. 保留所有權利。
+    </footer>
+
+    <script>
+        // 預覽頭像圖片
+        function previewImage(event) {
+            const file = event.target.files[0]; // 取得選擇的檔案
+            if (file) {
+                const reader = new FileReader(); // 建立檔案閱讀器
+                reader.onload = function(e) {
+                    document.getElementById('profile-img').src = e.target.result; // 顯示圖片預覽
+                };
+                reader.readAsDataURL(file); // 讀取檔案內容
+            }
+        }
+
+        // 設定註冊日期為今日日期
+        const registerDate = new Date().toLocaleDateString();
+        document.getElementById('register-date').innerText = registerDate;
+
+        // 切換編輯模式
+        function toggleEditMode() {
+            const isEditing = document.getElementById('edit-button').innerText === "儲存資料";
+
+            if (isEditing) {
+                // 儲存模式
+                const name = document.getElementById('name-input').value;
+                const gender = document.getElementById('gender-select').value;
+                const birthday = document.getElementById('birthday-input').value;
+
+                // 更新畫面顯示
+                document.getElementById('name-display').innerText = name;
+                document.getElementById('gender-display').innerText = gender;
+                document.getElementById('birthday-display').innerText = birthday;
+
+                // 儲存資料到 localStorage
+                const userData = {
+                    username: localStorage.getItem('username') || "會員名稱",
+                    name,
+                    gender,
+                    birthday,
+                    registerDate: document.getElementById('register-date').textContent,
+                };
+                localStorage.setItem('userData', JSON.stringify(userData));
+
+                // 切換回顯示模式
+                document.querySelectorAll('.editable').forEach(el => el.style.display = "none");
+                document.querySelectorAll('#name-display, #gender-display, #birthday-display').forEach(el => el.style.display = "inline");
+
+                // 更新按鈕文字
+                document.getElementById('edit-button').innerText = "編輯資料";
+            } else {
+                // 進入編輯模式
+                document.querySelectorAll('.editable').forEach(el => el.style.display = "inline");
+                document.querySelectorAll('#name-display, #gender-display, #birthday-display').forEach(el => el.style.display = "none");
+
+                // 更新按鈕文字
+                document.getElementById('edit-button').innerText = "儲存資料";
+            }
+        }
+
+        // 從 localStorage 讀取會員資訊
+        const userData = JSON.parse(localStorage.getItem('userData'));
+
+        if (userData) {
+            // 更新頁面顯示
+            document.getElementById('displayUsername').textContent = userData.username;
+            document.getElementById('name-display').textContent = userData.name || "會員名稱";
+            document.getElementById('gender-display').textContent = userData.gender || "男";
+            document.getElementById('birthday-display').textContent = userData.birthday || "2000/01/01";
+            document.getElementById('register-date').textContent = userData.registerDate || new Date().toLocaleDateString();
+
+            // 預設編輯框中的值
+            document.getElementById('name-input').value = userData.name || "會員名稱";
+            document.getElementById('gender-select').value = userData.gender || "男";
+            document.getElementById('birthday-input').value = userData.birthday || "2000-01-01";
+        } else {
+            alert('請先註冊或登入！');
+            window.location.href = 'register.html';
+        }
+    </script>
+</body>
+</html>

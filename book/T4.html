@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>偽裝學渣</title>
+    <style>
+        /* 設定網頁的基本字體及背景顏色 */
+        body {
+            font-family: Arial, sans-serif; /* 預設字體為 Arial，無法使用時切換為 sans-serif */
+            margin: 0; /* 移除頁面預設外邊距 */
+            padding: 0; /* 移除頁面預設內邊距 */
+            background-color: #fffbf4; /* 設定網頁背景顏色為米黃色 */
+            color: #333;
+        }
+
+        /* 標頭樣式 */
+        header {
+            background-color: #b6a290; /* 設定標頭背景顏色為棕灰色 */
+            padding: 5px; /* 設定上下內邊距為 20px */
+            display: flex; /* 使用彈性盒模型對齊內容 */
+            justify-content: space-between; /* 標頭內容兩側對齊 */
+            align-items: center; /* 垂直方向置中對齊 */
+        }
+
+        /* 標頭中導航連結的樣式 */
+        header nav a {
+            margin: 0 10px; /* 設定連結的左右外邊距為 10px */
+            text-decoration: none; /* 移除文字底線 */
+            color: #333; /* 設定文字顏色為深灰色 */
+            font-size: 20px;
+        }
+
+        .logo {
+            margin-left: 10px;
+        }
+
+        /* 主要內容容器樣式 */
+        .container {
+            margin: 20px; /* 外距 */
+            display: flex; /* 使用彈性盒模型 */
+            flex-direction: column; /* 垂直排列 */
+            align-items: center; /* 置中對齊 */
+        }
+
+        /* 書籍區塊樣式 */
+        .book-section {
+            background-color: #f0e1d3; /* 背景顏色 */
+            border-radius: 10px; /* 圓角 */
+            padding: 20px; /* 內距 */
+            width: 50%; /* 區塊寬度 */
+        }
+
+        /* 書籍封面樣式 */
+        .book-cover {
+            width: 300px; /* 寬度 */
+            height: auto; /* 高度 */
+            margin: auto; /* 自動置中 */
+            display: flex; /* 使用彈性盒模型 */
+            justify-content: center; /* 水平置中 */
+            align-items: center; /* 垂直置中 */
+            margin-bottom: 20px; /* 下方外距 */
+            border-radius: 8px; /* 圓角 */
+        }
+
+        .book-cover img{
+            border-radius: 8px; /* 圓角 */
+        }
+
+        /* 書籍詳細資訊樣式 */
+        .book-details {
+            line-height: 1.8; /* 行高 */
+            font-size: 20px; /* 字體大小 */
+        }
+
+        /* 價格區塊樣式 */
+        .price-section {
+            display: flex; /* 使用彈性盒模型 */
+            align-items: center; /* 垂直置中 */
+            margin-top: 20px; /* 上方外距 */
+            font-size: 20px; /* 字體大小 */
+        }
+
+        /* 數量按鈕區塊樣式 */
+        .quantity-buttons {
+            display: flex; /* 使用彈性盒模型 */
+            align-items: center; /* 垂直置中 */
+            margin-left: 10px; /* 左邊距 */
+            font-size: 20px; /* 字體大小 */
+        }
+
+        /* 數量按鈕樣式 */
+        .quantity-buttons button {
+            padding: 5px 10px; /* 內距 */
+            background-color: #c2a083; /* 背景顏色 */
+            border: none; /* 移除邊框 */
+            color: white; /* 文字顏色 */
+            cursor: pointer; /* 滑鼠樣式 */
+            border-radius: 50%;
+            font-size: 20px; /* 字體大小 */
+        }
+
+        /* 數量輸入框樣式 */
+        .quantity-buttons input {
+            width: 60px; /* 寬度 */
+            text-align: center; /* 文字置中 */
+            margin: 0 10px; /* 左右外距 */
+            font-size: 20px; /* 字體大小 */
+            border-radius: 8px;
+            border: 1px solid #666; /* 設定輸入框邊框顏色 */
+        }
+
+        /* 隱藏數字輸入框的上下箭頭 */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield; /* 隱藏 Firefox 中的箭頭 */
+        }
+
+        /* 操作按鈕區塊樣式 */
+        .action-buttons {
+            margin-top: 20px; /* 上方外距 */
+            display: flex; /* 使用彈性盒模型 */
+            gap: 10px; /* 按鈕間距 */
+            justify-content: space-between; /* 左右對齊 */
+        }
+
+        /* 操作按鈕樣式 */
+        .action-buttons button {
+            padding: 10px 20px; /* 內距 */
+            background-color: #c2a083; /* 背景顏色 */
+            color: white; /* 文字顏色 */
+            border: none; /* 移除邊框 */
+            cursor: pointer; /* 滑鼠樣式 */
+            border-radius: 8px;
+            font-size: 20px; /* 字體大小 */
+            flex: 1; /* 設定按鈕自動擴展 */
+            max-width: 48%; /* 設定按鈕最大寬度為 48% */
+            
+        }
+
+        /* 書籍描述樣式 */
+        .description {
+            margin-top: 20px; /* 上方外距 */
+            line-height: 1.8; /* 行高 */
+            font-size: 20px; /* 字體大小 */
+        }
+
+        .comment-title {
+            background-color: #c2a083; /* 背景顏色 */
+            text-align: center; /* 垂直置中 */
+            border-radius: 8px;
+            line-height: 2.0; /* 行高 */
+            color: white;
+        }
+
+        /* 評分區塊樣式 */
+        .rating {
+            font-size: 20px; /* 字體大小 */
+            display: inline-flex;
+            flex-direction: row-reverse;
+        }
+
+        /* 評分按鈕隱藏樣式 */
+        .rating input[type="radio"] {
+            display: none; /* 隱藏按鈕 */
+        }
+
+        /* 評分星星樣式 */
+        .rating label {
+            font-size: 30px; /* 字體大小 */
+            color: #c5c5c5; /* 預設星星顏色 */
+            cursor: pointer; /* 滑鼠樣式 */
+            transition: color 0.2s;
+        }
+
+        /* 被選中的星星樣式 */
+        .rating input[type="radio"]:checked ~ label {
+            color: #ffcc00; /* 黃金色 */
+        }
+
+        /* 滑鼠懸停星星樣式 */
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #ffcc00; /* 金色 */
+        }
+
+        .point {
+            font-size: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* 留言輸入框樣式 */
+        .comment-section textarea {
+            width: 100%; /* 寬度 */
+            height: 80px; /* 高度 */
+            margin-bottom: 10px; /* 下方外距 */
+            border-radius: 8px;
+        }
+        
+        .comment-section button {
+            background-color: #c2a083; /* 背景顏色 */
+            color: white; /* 文字顏色 */
+            border: none; /* 移除邊框 */
+            padding: 10px 20px; /* 內距 */
+            cursor: pointer; /* 滑鼠樣式 */
+            border-radius: 8px;
+            margin-left: auto; /* 將按鈕推到容器的右邊 */
+            font-size: 20px;
+            width: 30%; /* 設定按鈕寬度 */
+            display: flex; /* 設定按鈕內部為彈性布局 */
+            justify-content: center; /* 讓文字水平置中 */
+            align-items: center; /* 讓文字垂直置中 */
+        }
+
+        #user-name {
+            font-size: 20px;
+        }
+
+        /* 用戶留言區塊樣式 */
+        .user-comment {
+            margin-top: 10px; /* 上方外距 */
+            border-top: 1px solid #c2a083; /* 上方邊框 */
+            padding-top: 10px; /* 上方內距 */
+            font-size: 20px;
+        }
+
+        /* 每個留言的下邊框 */
+        .user-comment:not(:last-child) {
+            border-bottom: 1px solid #c2a083; 
+        }
+
+        .comment1 {
+            border-top: 1px solid #c2a083; 
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comment2 {
+            border-top: 1px solid #c2a083; 
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁首 -->
+    <header class="header">
+        <h1 class="logo">小說購物網</h1>
+        <nav class="nav-bar">
+            <a href="../index.html">首頁</a>
+            <a href="../register.html">會員註冊</a>
+            <a href="../login.html">會員登入</a>
+            <a href="../shopping_cart.html">購物車</a>
+            <a href="../profile.html">會員中心</a>
+        </nav>
+    </header>    
+
+    <!-- 主要內容容器 -->
+    <div class="container">
+        <!-- 書籍資訊區塊 -->
+        <div class="book-section">
+            <!-- 書籍封面 -->
+            <div class="book-cover">
+                <img src="../img/h4.jpg" style="width:100%">
+            </div>
+
+            <!-- 書籍詳細資訊 -->
+            <div class="book-details">
+                <p id="book-title">書名：偽裝學渣</p>
+                <p id="book-author">作者：木瓜黃</p>
+                <p>題材：現代校園</p>
+                <p>標籤：<span style="color: #4879ff;">#甜文 #校園 </span></p>
+                <p id="book-price">價錢：<span style="color: #ff6b6b;">NT$300</span>/本</p>
+            </div>
+
+            <!-- 購買數量與價格區塊 -->
+            <div class="price-section">
+                購買數量：
+                <div class="quantity-buttons">
+                    <button onclick="changeQuantity(-1)">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button onclick="changeQuantity(1)">+</button>
+                </div>
+            </div>
+
+
+            <!-- 操作按鈕區塊 -->
+            <div class="action-buttons">
+                <button onclick="addToCart()">加入購物車</button>
+                <button onclick="buyNow()">直接購買</button>
+            </div>
+
+            <!-- 書籍描述區塊 -->
+            <div class="description">
+                <strong>內容簡介：</strong><br>
+                <p>賀朝、謝俞，兩位明明智力超群、聰明好學卻拚命偽裝成讓師長頭疼的「問題兒童」，到底是為何原因？</p>
+                <p>兩個活寶機緣巧合成為同班同桌後，打打鬧鬧卻滋生出不一樣的感情，越了解就愛越多，</p>
+                <p>原來心底的徬徨無助卻有可以溫暖治癒的妙方。</p>
+                <strong>作者介紹：木瓜黃</strong><br>
+                <p>木瓜黃的作品以童話般的風格見長，雖然不完全貼近現實，卻總能觸動人心。</p>
+                <p>她的文筆細膩而富有情感，作品如《七芒星》《偽裝學渣》《一覺醒來聽說我結婚了》《這題超綱了》等，往往以理想化的情節和人物為核心。</p>
+                <p>儘管這些故事大多脫離實際，甚至顯得過於完美，但正是這種超現實的表達，讓讀者在閱讀時感受到溫暖與希望。</p><br>
+            </div>
+
+            <h2 class="comment-title">評鑑</h2>
+
+            <!-- 顯示登錄用戶名 -->
+            <div id="user-name" style="font-size: 20px; font-weight: bold;" >會員用戶<span id="username"></span></div>
+
+            <!-- 評分系統 -->
+            <div class="point">我的評分：</div>
+            
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+            </div>
+
+            <!-- 留言區塊 -->
+            <div class="comment-section">
+                <textarea id="comment" placeholder="留言內容" style="font-size: 20px;"></textarea>
+                <div class="comment-section">
+                    <button onclick="submitComment()">送出</button>
+                </div>
+            </div>
+
+            <!-- 用戶留言區塊 -->
+             <div id="userComments" class="user-comment">
+                <div class="comment2">
+                    <strong>人間失格</strong><br>
+                    評分：<span style="color: #ffcc00;">★★★</span><br>
+                    比童話還美好的存在
+                </div>
+                <div class="comment1">
+                    <strong>橘子汽水</strong><br>
+                    評分：<span style="color: #ffcc00;">★★★★</span><br>
+                    “被人拉起來，跟自己站起來是兩碼事。” 好喜歡這句話
+                </div>
+                <div id="userComments" class="user-comment"></div>
+             </div>
+            
+        </div>
+    </div>
+
+    <script>
+        // 模擬登錄的用戶名稱（可根據實際需求調整）
+        const loggedInUser = '會員用戶'; // 這裡設置為小王，你可以根據需要改變
+
+
+        // 改變購買數量的函式
+        function changeQuantity(amount) {
+            const quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value); // 取得目前數值
+            currentValue = isNaN(currentValue) ? 1 : currentValue; // 防止非數字
+            currentValue += amount; // 增加或減少數值
+            if (currentValue < 1) currentValue = 1; // 確保數值最小為 1
+            quantityInput.value = currentValue; // 更新輸入框數值
+        }
+
+        // 加入購物車的函式
+        function addToCart() {
+            const bookTitle = document.getElementById('book-title').textContent.replace('書名：', '').trim();
+            const bookAuthor = document.getElementById('book-author').textContent.replace('作者：', '').trim();
+            const bookPrice = parseInt(document.getElementById('book-price').textContent.replace('價錢：NT$', '').replace('/本', '').trim());
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const bookImage = document.querySelector('.book-cover img').src;
+
+            // 從 localStorage 獲取現有的購物車資料
+            const cartBooks = JSON.parse(localStorage.getItem('cartBooks')) || [];
+
+            // 檢查是否已經存在同一本書
+            const existingBook = cartBooks.find(book => book.title === bookTitle);
+            if (existingBook) {
+                existingBook.quantity += quantity; // 如果存在，增加數量
+            } else {
+                cartBooks.push({
+                    title: bookTitle,
+                    author: bookAuthor,
+                    price: bookPrice,
+                    quantity: quantity,
+                    image: bookImage,
+                });
+            }
+
+            // 更新購物車到 localStorage
+            localStorage.setItem('cartBooks', JSON.stringify(cartBooks));
+            alert(`成功將 ${quantity} 本《${bookTitle}》加入購物車！`);
+        }
+
+        // 直接購買的函式
+        function buyNow() {
+            alert('購買成功！'); // 彈出購買成功提示框
+        }
+
+        // 提交留言的函式
+        function submitComment() {
+            const commentText = document.getElementById('comment').value; // 取得留言內容
+            const ratingValue = document.querySelector('input[name="rating"]:checked'); // 取得選中的評分
+
+            if (!commentText || !ratingValue) {
+                alert('請填寫留言並選擇評分！');
+                return;
+            }
+
+            const rating = ratingValue.value; // 取得選中的評分
+            const commentSection = document.getElementById('userComments');
+
+            // 建立新的留言區塊
+            const userCommentDiv = document.createElement('div');
+            userCommentDiv.classList.add('user-comment');
+            userCommentDiv.innerHTML = `
+                <strong>${loggedInUser}</strong><br>
+                評分：<span style="color: #ffcc00;">${'★'.repeat(rating)}</span><br>
+                ${commentText}
+            `;
+            
+            // 新留言加入到最上方
+            commentSection.insertBefore(userCommentDiv, commentSection.firstChild);
+
+            // 確保新增留言不顯示下邊框
+            userCommentDiv.style.borderBottom = 'none'; 
+
+            // 更新其他留言的邊框
+            const userComments = commentSection.getElementsByClassName('user-comment');
+            for (let i = 0; i < userComments.length; i++) {
+                if (i === 0) {
+                    // 第一條留言不顯示上邊框
+                    userComments[i].style.borderTop = 'none'; 
+                } else {
+                    // 其他留言顯示上邊框和下邊框
+                    userComments[i].style.borderTop = '1px solid #c2a083';
+                    if (i !== userComments.length - 1) {
+                        // 除了最新的留言，其他都顯示下邊框
+                        userComments[i].style.borderBottom = 'none';
+                    }
+                }
+            }
+
+            // 清空留言框
+            document.getElementById('comment').value = '';
+            document.querySelector('input[name="rating"]:checked').checked = false; // 清除選中的評分
+        }
+    </script>
+</body>
+</html>
