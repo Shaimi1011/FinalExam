@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7; /* 淺灰背景 */
+            background-color: #fffbf4; /* 背景為淺米色 */
             display: flex; /* 使用彈性盒模型 */
             justify-content: center; /* 水平方向置中 */
             align-items: center; /* 垂直方向置中 */
@@ -118,6 +118,16 @@
         .login-link {
             font-size: 20px;
         }
+
+        footer {
+            position: fixed; /* 固定位置 */
+            bottom: 0;       /* 距離底部 0px */
+            left: 0;         /* 距離左側 0px */
+            width: 100%;     /* 寬度佔滿頁面 */
+            color: #666;     /* 字體顏色 */
+            text-align: center; /* 文字置中 */
+            padding: 10px 0; /* 上下內距 */
+        }
     </style>
 </head>
 <body>
@@ -129,7 +139,9 @@
             <a href="register.html">會員註冊</a>
             <a href="login.html">會員登入</a>
             <a href="shopping_cart.html">購物車</a>
+            <a href="record.html">購買紀錄</a>
             <a href="profile.html">會員中心</a>
+            <a href="about_us.html">關於我們</a>
         </nav>
     </header>
 
@@ -157,6 +169,11 @@
             已有帳號？<a href="login.html">立即登入</a>
         </div>
     </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        &copy; 小說購物網站. 保留所有權利。
+    </footer>
 
     <script>
         document.getElementById('register-form').addEventListener('submit', function(event) {

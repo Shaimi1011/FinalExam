@@ -246,6 +246,13 @@
             margin-bottom: 10px;
             margin-top: 10px;
         }
+
+        /* 頁尾樣式 */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666; /* 灰色文字 */
+        }
     </style>
 </head>
 <body>
@@ -257,6 +264,7 @@
             <a href="../register.html">會員註冊</a>
             <a href="../login.html">會員登入</a>
             <a href="../shopping_cart.html">購物車</a>
+            <a href="../record.html">購買紀錄</a>
             <a href="../profile.html">會員中心</a>
         </nav>
     </header>    
@@ -362,6 +370,13 @@
         </div>
     </div>
 
+    <!-- 頁尾 -->
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; 小說購物網站. 保留所有權利。</p>
+        </div>
+    </footer>
+    
     <script>
         // 模擬登錄的用戶名稱（可根據實際需求調整）
         const loggedInUser = '會員用戶'; // 這裡設置為小王，你可以根據需要改變
@@ -410,6 +425,35 @@
         // 直接購買的函式
         function buyNow() {
             alert('購買成功！'); // 彈出購買成功提示框
+        }
+
+        function buyNow() {
+            // 將當前書籍信息存入購物車（LocalStorage）
+            const bookTitle = document.getElementById('book-title').textContent.replace('書名：', '').trim();
+            const bookAuthor = document.getElementById('book-author').textContent.replace('作者：', '').trim();
+            const bookPrice = parseInt(document.getElementById('book-price').textContent.replace('價錢：NT$', '').replace('/本', '').trim());
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const bookImage = document.querySelector('.book-cover img').src;
+
+            const cartBooks = JSON.parse(localStorage.getItem('cartBooks')) || [];
+            const existingBook = cartBooks.find(book => book.title === bookTitle);
+            if (existingBook) {
+                existingBook.quantity += quantity;
+            } else {
+                cartBooks.push({
+                    title: bookTitle,
+                    author: bookAuthor,
+                    price: bookPrice,
+                    quantity: quantity,
+                    image: bookImage,
+                });
+            }
+
+            localStorage.setItem('cartBooks', JSON.stringify(cartBooks));
+
+            // 跳轉至購物車頁面
+            alert('成功購買！');
+            window.location.href = "../shopping_cart.html";
         }
 
         // 提交留言的函式

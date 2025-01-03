@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購買紀錄</title>
+
+    <style>
+        /* 設定整體背景與字型樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fffbf4; /* 背景為淺米色 */
+            color: #333;
+        }
+
+        /* 頁首第一區塊樣式 */
+        .header1 {
+            background-color: #b6a290; /* 深米色背景 */
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 頁首導覽連結樣式 */
+        .header1 nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333; /* 字體顏色為深灰 */
+            font-size: 20px;
+        }
+
+        /* 第一頁首的網站名稱位置 */
+        .logo {
+            margin-left: 10px;
+        }
+
+        /* 頁首第二區塊樣式 */
+        .header2 {
+            background-color: #e2d3c7; /* 米白色背景 */
+            color: #4a3c31; /* 深咖啡色文字 */
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* 頁首第二區塊文字樣式 */
+        .header2 h1 {
+            margin: 0;
+        }
+
+        /* 主要內容容器 */
+        .container {
+            max-width: 800px; /* 最大寬度 */
+            margin: 20px auto; /* 垂直與水平置中 */
+            padding: 20px;
+            background-color: #fff; /* 白色背景 */
+            border-radius: 8px; /* 圓角邊框 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+        }
+
+        /* 修改購物紀錄顯示樣式，居中顯示文字 */
+        #purchase-history {
+            max-width: 800px; /* 最大寬度 */
+            margin: 20px auto; /* 垂直與水平置中 */
+            padding: 10px;
+            border-radius: 8px; /* 圓角邊框 */
+            font-size: 20px;
+            color: #666;
+            text-align: center; /* 文字水平居中 */
+        }
+
+        #purchase-history.empty {
+            display: flex; /* 使用 Flexbox */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        .history-item {
+            position: relative; /* 設定相對定位，這樣按鈕才會依照容器定位 */
+            text-align: left; /* 購買紀錄內容靠左顯示 */
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .history-item p {
+            margin-left: 20px; /* 書名、數量、價格左邊距 */
+        }
+
+        .delete-button {
+            margin-left: 20px; /* 刪除按鈕左邊距 */
+        }
+
+        /* 刪除紀錄按鈕樣式 */
+        .delete-button {
+            position: absolute; /* 設定絕對定位 */
+            bottom: 20px; /* 距離底部 */
+            right: 20px; /* 距離右側 */
+            background-color: #ff6b6b; /* 紅色背景 */
+            color: #fff; /* 白色文字 */
+            border: none; /* 無邊框 */
+            border-radius: 8px; /* 圓角 */
+            padding: 10px 20px; /* 內邊距 */
+            font-size: 20px; /* 字體大小 */
+            cursor: pointer; /* 手形游標 */
+        }
+
+        .delete-button:hover {
+            background-color: #d9534f; /* 深紅色 */
+        }
+        
+        /* 頁尾樣式 */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666; /* 灰色文字 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁首區域 -->
+    <header class="header1">
+        <h1 class="logo">小說購物網</h1>
+        <nav class="nav-bar">
+            <a href="index.html">首頁</a>
+            <a href="register.html">會員註冊</a>
+            <a href="login.html">會員登入</a>
+            <a href="shopping_cart.html">購物車</a>
+            <a href="record.html">購買紀錄</a>
+            <a href="profile.html">會員中心</a>
+            <a href="about_us.html">關於我們</a>
+        </nav>
+    </header>
+
+    <!-- 第二頁首區域 -->
+    <header class="header2">
+        <h1>購買紀錄</h1>
+    </header>
+
+    <!-- 主內容區域 -->
+    <div class="container">
+        <div id="purchase-history" class="empty">購買紀錄目前是空的。</div>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        &copy; 小說購物網站. 保留所有權利。
+    </footer>
+
+    <script>
+        // 讀取購物紀錄
+        const purchaseHistory = JSON.parse(sessionStorage.getItem('purchaseHistory')) || [];
+
+        function renderPurchaseHistory() {
+            const historyContainer = document.getElementById('purchase-history');
+
+            // 如果沒有購買紀錄，顯示提示訊息
+            if (purchaseHistory.length === 0) {
+                historyContainer.classList.add('empty');
+                historyContainer.innerHTML = "<p>購買紀錄目前是空的。</p>";
+            } else {
+                historyContainer.classList.remove('empty');
+                historyContainer.innerHTML = ""; // 清空現有內容
+
+                // 如果有購買紀錄，逐一渲染紀錄
+                purchaseHistory.forEach((record, index) => {
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+
+                    const itemsHtml = record.items.map(
+                        item => `
+                            <div style="margin-left: 20px; margin-bottom: 10px;">
+                                <p>書名：${item.title}</p>
+                                <p>數量：${item.quantity}</p>
+                                <p>價格：NT$${item.price * item.quantity}</p><br>
+                            </div>
+                        `
+                    ).join(" ");
+
+                    // 新增獨立刪除按鈕
+                    historyItem.innerHTML = `
+                        <p><strong>購買日期：</strong>${record.date}</p>
+                        ${itemsHtml}
+                        <button class="delete-button" onclick="deleteRecord(${index})">刪除</button>
+                    `;
+
+                    historyContainer.appendChild(historyItem);
+                });
+            }
+        }
+
+        // 刪除單筆購物紀錄
+        function deleteRecord(index) {
+            if (confirm("確定要刪除此購買紀錄嗎？")) {
+                purchaseHistory.splice(index, 1); // 刪除指定索引的紀錄
+                sessionStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory)); // 更新 localStorage
+                renderPurchaseHistory(); // 重新渲染紀錄
+            }
+        }
+
+        renderPurchaseHistory(); // 渲染空的購物紀錄
+    </script>
+
+</body>
+</html>

@@ -1,331 +1,347 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>購物車</title>
-    <style>
-        /* 設定整體樣式 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fffbf4; /* 背景顏色 */
-            color: #333;
-        }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>購物車</title>
+        <style>
+            /* 設定整體樣式 */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #fffbf4; /* 背景顏色 */
+                color: #333;
+            }
 
-        /* 第一個 Header 樣式 */
-        .header1 {
-            background-color: #b6a290; /* 棕灰色背景 */
-            padding: 5px; /* 上下內邊距 */
-            display: flex; /* 彈性盒模型 */
-            justify-content: space-between; /* 左右對齊 */
-            align-items: center; /* 垂直置中 */
-        }
+            /* 第一個 Header 樣式 */
+            .header1 {
+                background-color: #b6a290; /* 棕灰色背景 */
+                padding: 5px; /* 上下內邊距 */
+                display: flex; /* 彈性盒模型 */
+                justify-content: space-between; /* 左右對齊 */
+                align-items: center; /* 垂直置中 */
+            }
 
-        /* 導航連結樣式 */
-        .header1 nav a {
-            margin: 0 10px; /* 左右間距 */
-            text-decoration: none; /* 移除底線 */
-            color: #333; /* 深灰色文字 */
-            font-size: 20px; /* 字體大小 */
-        }
+            /* 導航連結樣式 */
+            .header1 nav a {
+                margin: 0 10px; /* 左右間距 */
+                text-decoration: none; /* 移除底線 */
+                color: #333; /* 深灰色文字 */
+                font-size: 20px; /* 字體大小 */
+            }
 
-        /* 第二個 Header 樣式 */
-        .header2 {
-            background-color: #e2d3c7; /* 米白背景 */
-            color: #4a3c31; /* 深棕文字 */
-            padding: 15px;
-            text-align: center;
-        }
-        .header2 h1 {
-            margin: 0;
-        }
+            /* 第二個 Header 樣式 */
+            .header2 {
+                background-color: #e2d3c7; /* 米白背景 */
+                color: #4a3c31; /* 深棕文字 */
+                padding: 15px;
+                text-align: center;
+            }
+            .header2 h1 {
+                margin: 0;
+            }
 
-        /* 主要內容容器 */
-        .container {
-            max-width: 800px; /* 最大寬度 */
-            margin: 20px auto; /* 垂直與水平置中 */
-            padding: 20px;
-            background-color: #fff; /* 白色背景 */
-            border-radius: 8px; /* 圓角邊框 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
-        }
+            /* 主要內容容器 */
+            .container {
+                max-width: 800px; /* 最大寬度 */
+                margin: 20px auto; /* 垂直與水平置中 */
+                padding: 20px;
+                background-color: #fff; /* 白色背景 */
+                border-radius: 8px; /* 圓角邊框 */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+            }
+            
+            .empty-cart {
+                max-width: 800px; /* 最大寬度 */
+                margin: 20px auto; /* 垂直與水平置中 */
+                padding: 10px;
+                border-radius: 8px; /* 圓角邊框 */
+                font-size: 20px;
+                color: #666;
+                text-align: center;
+            }
+
+            /* 單一商品區塊 */
+            .product {
+                display: flex; /* 彈性布局 */
+                align-items: center; /* 垂直置中 */
+                justify-content: space-between; /* 左右對齊 */
+                padding: 10px 10px; /* 上下內邊距 */
+                border-bottom: 1px solid #ddd; /* 下邊框 */
+            }
+
+            /* 商品圖片樣式 */
+            .product img {
+                width: 200px; /* 圖片寬度 */
+                height: 280px; /* 圖片高度 */
+                border-radius: 8px; /* 圓角圖片 */
+                margin: 5px;
+            }
+
+            /* 商品資訊區塊 */
+            .product-info {
+                flex: 1; /* 填滿剩餘空間 */
+                margin-left: 20px;
+                text-align: left; /* 向左對齊文字 */
+                line-height: 1.8; /* 行高 */
+            }
+            .product-info p {
+                margin: 5px 0;
+                font-size: 20px;
+                color: #4a3c31; /* 深棕色文字 */
+            }
+
+            /* 數量調整按鈕 */
+            .quantity {
+                display: flex; /* 彈性布局 */
+                align-items: center; /* 垂直置中 */
+                font-size: 20px;
+            }
+            .quantity button {
+                background-color: #b6a290; /* 按鈕背景顏色 */
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 50%; /* 圓形按鈕 */
+                cursor: pointer;
+                font-size: 20px;
+            }
+
+            .quantity-input {
+                width: 60px; /* 設定輸入框寬度 */
+                text-align: center; /* 文字置中 */
+                font-size: 20px; /* 設定輸入框字體大小 */
+                border: 1px solid #666; /* 設定輸入框邊框顏色 */
+                border-radius: 8px; /* 設定輸入框圓角 */
+                margin: 0 10px; /* 左右外距 */
+                outline: none; /* 移除點擊輸入框時的外圍邊框 */
+                -webkit-appearance: none; /* 隱藏上下箭頭 (Chrome, Safari 等 WebKit 引擎的瀏覽器) */
+                -moz-appearance: textfield; /* 隱藏上下箭頭 (Firefox 瀏覽器) */
+                appearance: none; /* 隱藏上下箭頭 (標準 CSS 設定，適用於所有瀏覽器) */
+            }
+
+            .quantity-input::-webkit-outer-spin-button,
+            .quantity-input::-webkit-inner-spin-button {
+                -webkit-appearance: none; /* 隱藏上下箭頭 (Chrome, Safari 等 WebKit 引擎的瀏覽器) */
+                margin: 0; /* 移除上下箭頭的邊距 */
+            }
+
+            .quantity-input[type="number"] {
+                -moz-appearance: textfield; /* 隱藏上下箭頭 (Firefox 瀏覽器) */
+            }
+
+            .quantity span {
+                margin: 0 10px; /* 左右間距 */
+                width: 30px; /* 固定寬度 */
+                text-align: center; /* 文字置中 */
+            }
+
+            /* 刪除按鈕 */
+            .remove-btn {
+                background-color: #ff6b6b; /* 按鈕背景顏色 */
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 8px; /* 圓角 */
+                cursor: pointer;
+                font-size: 20px;
+            }
+
+            /* 總價區 */
+            .total-section {
+                text-align: right; /* 文字靠右對齊 */
+                padding: 10px 0;
+                font-size: 25px;
+            }
+
+            /* 操作按鈕樣式 */
+            .action-buttons {
+                display: flex; /* 彈性布局 */
+                justify-content: space-between; /* 左右對齊 */
+                margin-top: 10px;
+            }
+            .action-buttons button {
+                background-color: #b6a290; /* 按鈕背景 */
+                color: white;
+                border: none;
+                padding: 10px 10px;
+                border-radius: 8px; /* 圓角 */
+                cursor: pointer;
+                flex: 1; /* 設定按鈕自動擴展 */
+                font-size: 20px;
+                max-width: 48%; /* 設定按鈕最大寬度為 48% */
+            }
+            /* 頁尾樣式 */
+            footer {
+                text-align: center;
+                margin-top: 20px;
+                color: #666; /* 灰色文字 */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 第一個 Header，導航列 -->
+        <header class="header1">
+            <h1 class="logo">小說購物網</h1>
+            <nav class="nav-bar">
+                <a href="index.html">首頁</a>
+                <a href="register.html">會員註冊</a>
+                <a href="login.html">會員登入</a>
+                <a href="shopping_cart.html">購物車</a>
+                <a href="record.html">購買紀錄</a>
+                <a href="profile.html">會員中心</a>
+                <a href="about_us.html">關於我們</a>
+            </nav>
+        </header>
+
+        <!-- 第二個 Header，購物車標題 -->
+        <header class="header2">
+            <h1>購物車</h1>
+        </header>
+
+        <!-- 主要內容區 -->
+        <div class="container">
+            <!-- 書籍清單 -->
+            <div id="product-list" class="empty-cart">購物車目前是空的。</div>
         
-        .empty-cart {
-            max-width: 800px; /* 最大寬度 */
-            margin: 20px auto; /* 垂直與水平置中 */
-            padding: 10px;
-            border-radius: 8px; /* 圓角邊框 */
-            font-size: 20px;
-            color: #666;
-            text-align: center;
-        }
-
-        /* 單一商品區塊 */
-        .product {
-            display: flex; /* 彈性布局 */
-            align-items: center; /* 垂直置中 */
-            justify-content: space-between; /* 左右對齊 */
-            padding: 10px 10px; /* 上下內邊距 */
-            border-bottom: 1px solid #ddd; /* 下邊框 */
-        }
-
-        /* 商品圖片樣式 */
-        .product img {
-            width: 200px; /* 圖片寬度 */
-            height: 280px; /* 圖片高度 */
-            border-radius: 8px; /* 圓角圖片 */
-            margin: 5px;
-        }
-
-        /* 商品資訊區塊 */
-        .product-info {
-            flex: 1; /* 填滿剩餘空間 */
-            margin-left: 20px;
-            text-align: left; /* 向左對齊文字 */
-            line-height: 1.8; /* 行高 */
-        }
-        .product-info p {
-            margin: 5px 0;
-            font-size: 20px;
-            color: #4a3c31; /* 深棕色文字 */
-        }
-
-        /* 數量調整按鈕 */
-        .quantity {
-            display: flex; /* 彈性布局 */
-            align-items: center; /* 垂直置中 */
-            font-size: 20px;
-        }
-        .quantity button {
-            background-color: #b6a290; /* 按鈕背景顏色 */
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 50%; /* 圓形按鈕 */
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        .quantity-input {
-            width: 60px; /* 設定輸入框寬度 */
-            text-align: center; /* 文字置中 */
-            font-size: 20px; /* 設定輸入框字體大小 */
-            border: 1px solid #666; /* 設定輸入框邊框顏色 */
-            border-radius: 8px; /* 設定輸入框圓角 */
-            margin: 0 10px; /* 左右外距 */
-            outline: none; /* 移除點擊輸入框時的外圍邊框 */
-            -webkit-appearance: none; /* 隱藏上下箭頭 (Chrome, Safari 等 WebKit 引擎的瀏覽器) */
-            -moz-appearance: textfield; /* 隱藏上下箭頭 (Firefox 瀏覽器) */
-            appearance: none; /* 隱藏上下箭頭 (標準 CSS 設定，適用於所有瀏覽器) */
-        }
-
-        .quantity-input::-webkit-outer-spin-button,
-        .quantity-input::-webkit-inner-spin-button {
-            -webkit-appearance: none; /* 隱藏上下箭頭 (Chrome, Safari 等 WebKit 引擎的瀏覽器) */
-            margin: 0; /* 移除上下箭頭的邊距 */
-        }
-
-        .quantity-input[type="number"] {
-            -moz-appearance: textfield; /* 隱藏上下箭頭 (Firefox 瀏覽器) */
-        }
-
-        .quantity span {
-            margin: 0 10px; /* 左右間距 */
-            width: 30px; /* 固定寬度 */
-            text-align: center; /* 文字置中 */
-        }
-
-        /* 刪除按鈕 */
-        .remove-btn {
-            background-color: #ff6b6b; /* 按鈕背景顏色 */
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 8px; /* 圓角 */
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        /* 總價區 */
-        .total-section {
-            text-align: right; /* 文字靠右對齊 */
-            padding: 10px 0;
-            font-size: 25px;
-        }
-
-        /* 操作按鈕樣式 */
-        .action-buttons {
-            display: flex; /* 彈性布局 */
-            justify-content: space-between; /* 左右對齊 */
-            margin-top: 10px;
-        }
-        .action-buttons button {
-            background-color: #b6a290; /* 按鈕背景 */
-            color: white;
-            border: none;
-            padding: 10px 10px;
-            border-radius: 8px; /* 圓角 */
-            cursor: pointer;
-            flex: 1; /* 設定按鈕自動擴展 */
-            font-size: 20px;
-            max-width: 48%; /* 設定按鈕最大寬度為 48% */
-        }
-        /* 頁尾樣式 */
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #666; /* 灰色文字 */
-        }
-    </style>
-</head>
-<body>
-    <!-- 第一個 Header，導航列 -->
-    <header class="header1">
-        <h1 class="logo">小說購物網</h1>
-        <nav class="nav-bar">
-            <a href="index.html">首頁</a>
-            <a href="register.html">會員註冊</a>
-            <a href="login.html">會員登入</a>
-            <a href="shopping_cart.html">購物車</a>
-            <a href="profile.html">會員中心</a>
-        </nav>
-    </header>
-
-    <!-- 第二個 Header，購物車標題 -->
-    <header class="header2">
-        <h1>購物車</h1>
-    </header>
-
-    <!-- 主要內容區 -->
-    <div class="container">
-        <!-- 書籍清單 -->
-        <div id="product-list" class="empty-cart">購物車目前是空的。</div>
-    
-        <!-- 總價與按鈕 -->
-        <div id="cart-footer" style="display: none;">
-            <div class="total-section">
-                <p id="total-items">共 0 項商品，數量 0 個</p>
-                <p id="total-price">金額總計：<span style="color: #ff6b6b;">NT$0</span></p>
-            </div>
-            <div class="action-buttons">
-                <button onclick="goBack()">返回</button>
-                <button class="confirm-btn" onclick="confirmPurchase()">確定</button>
+            <!-- 總價與按鈕 -->
+            <div id="cart-footer" style="display: none;">
+                <div class="total-section">
+                    <p id="total-items">共 0 項商品，數量 0 個</p>
+                    <p id="total-price">金額總計：<span style="color: #ff6b6b;">NT$0</span></p>
+                </div>
+                <div class="action-buttons">
+                    <button onclick="goBack()">返回</button>
+                    <button class="confirm-btn" onclick="confirmPurchase()">確定</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- 頁尾 -->
-    <footer>
-        &copy; 小說購物網站. 保留所有權利。
-    </footer>
+        <!-- 頁尾 -->
+        <footer>
+            &copy; 小說購物網站. 保留所有權利。
+        </footer>
 
-    <script>
-        const cart = {
-            books: JSON.parse(localStorage.getItem('cartBooks')) || [],
+        <script>
+            const cart = {
+                books: JSON.parse(localStorage.getItem('cartBooks')) || [],
 
-            initializeCart() {
-                const productList = document.getElementById('product-list');
-                const cartFooter = document.getElementById('cart-footer');
-                productList.innerHTML = ''; // 清空列表
+                initializeCart() {
+                    const productList = document.getElementById('product-list');
+                    const cartFooter = document.getElementById('cart-footer');
+                    productList.innerHTML = ''; // 清空列表
 
-                if (this.books.length === 0) {
-                    productList.innerHTML = '<p style="text-align: center; color: #666;">購物車目前是空的。</p>';
-                    cartFooter.style.display = 'none';
+                    if (this.books.length === 0) {
+                        productList.innerHTML = '<p style="text-align: center; color: #666;">購物車目前是空的。</p>';
+                        cartFooter.style.display = 'none';
+                        return;
+                    }
+
+                    // 顯示每本書
+                    this.books.forEach((book, index) => {
+                        const product = document.createElement('div');
+                        product.className = 'product';
+                        product.setAttribute('data-index', index);
+
+                        product.innerHTML = `
+                            <img src="${book.image}" alt="${book.title}">
+                            <div class="product-info">
+                                <p>書名：${book.title}</p>
+                                <p>作者：${book.author}</p>
+                                <p>價錢：NT$${book.price}/本</p>
+                                <div class="quantity">
+                                    <button class="minus-btn" onclick="cart.updateQuantity(${index}, -1)">-</button>
+                                    <input type="number" class="quantity-input" value="${book.quantity}" onchange="cart.updateQuantityManual(${index}, this.value)">
+                                    <button class="plus-btn" onclick="cart.updateQuantity(${index}, 1)">+</button>
+                                </div>
+                            </div>
+                            <button class="remove-btn" onclick="cart.removeProduct(${index})">刪除</button>
+                        `;
+                        productList.appendChild(product);
+                    });
+
+                    cartFooter.style.display = 'block';
+                    this.updateTotals();
+                    this.saveToStorage();
+                },
+
+                updateQuantity(index, change) {
+                    this.books[index].quantity = Math.max(1, this.books[index].quantity + change);
+                    this.initializeCart(); // 重新渲染購物車
+                },
+
+                updateQuantityManual(index, value) {
+                    const newQuantity = parseInt(value);
+                    if (isNaN(newQuantity) || newQuantity < 1) {
+                        alert("數量必須為正整數！");
+                        this.books[index].quantity = 1; // 重置為 1
+                    } else {
+                        this.books[index].quantity = newQuantity;
+                    }
+                    this.saveToStorage();
+                    this.initializeCart();
+                },
+
+                removeProduct(index) {
+                    const productTitle = this.books[index].title; // 取得商品名稱
+                    this.books = this.books.filter(book => book.title !== productTitle); // 刪除所有相同商品
+                    this.saveToStorage(); // 更新 localStorage
+                    alert(`已刪除商品：${productTitle}`);
+                    this.initializeCart(); // 重新渲染購物車
+                },
+
+                updateTotals() {
+                    let totalItems = 0;
+                    let totalPrice = 0;
+
+                    this.books.forEach(book => {
+                        totalItems += book.quantity;
+                        totalPrice += book.price * book.quantity;
+                    });
+
+                    document.getElementById('total-items').textContent = `共 ${this.books.length} 項商品，數量 ${totalItems} 個`;
+                    document.getElementById('total-price').innerHTML = `金額總計：<span style="color: #ff6b6b;">NT$${totalPrice}</span>`;
+                },
+
+                saveToStorage() {
+                    localStorage.setItem('cartBooks', JSON.stringify(this.books));
+                },
+            };
+
+            // 初始化購物車
+            cart.initializeCart();
+
+            function confirmPurchase() {
+                if (cart.books.length === 0) {
+                    alert("購物車是空的，無法確認購買！");
                     return;
                 }
 
-                // 顯示每本書
-                this.books.forEach((book, index) => {
-                    const product = document.createElement('div');
-                    product.className = 'product';
-                    product.setAttribute('data-index', index);
+                // 顯示成功訂購的彈窗
+                alert("成功訂購！");
 
-                    product.innerHTML = `
-                        <img src="${book.image}" alt="${book.title}">
-                        <div class="product-info">
-                            <p>書名：${book.title}</p>
-                            <p>作者：${book.author}</p>
-                            <p>價錢：NT$${book.price}/本</p>
-                            <div class="quantity">
-                                <button class="minus-btn" onclick="cart.updateQuantity(${index}, -1)">-</button>
-                                <input type="number" class="quantity-input" value="${book.quantity}" onchange="cart.updateQuantityManual(${index}, this.value)">
-                                <button class="plus-btn" onclick="cart.updateQuantity(${index}, 1)">+</button>
-                            </div>
-                        </div>
-                        <button class="remove-btn" onclick="cart.removeProduct(${index})">刪除</button>
-                    `;
-                    productList.appendChild(product);
-                });
+                // 將購物車內容存入購物紀錄
+                const purchaseHistory = JSON.parse(sessionStorage.getItem('purchaseHistory')) || [];
+                const currentPurchase = {
+                    date: new Date().toLocaleString(), // 訂購日期
+                    items: cart.books, // 購物車內容
+                };
+                purchaseHistory.push(currentPurchase);
+                sessionStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
 
-                cartFooter.style.display = 'block';
-                this.updateTotals();
-                this.saveToStorage();
-            },
+                // 清空購物車
+                cart.books = [];
+                cart.saveToStorage(); // 更新 localStorage
 
-            updateQuantity(index, change) {
-                this.books[index].quantity = Math.max(1, this.books[index].quantity + change);
-                this.initializeCart(); // 重新渲染購物車
-            },
+                // 重新渲染購物車為空
+                cart.initializeCart();
+            }
 
-            updateQuantityManual(index, value) {
-                const newQuantity = parseInt(value);
-                if (isNaN(newQuantity) || newQuantity < 1) {
-                    alert("數量必須為正整數！");
-                    this.books[index].quantity = 1; // 重置為 1
-                } else {
-                    this.books[index].quantity = newQuantity;
-                }
-                this.saveToStorage();
-                this.initializeCart();
-            },
-
-            removeProduct(index) {
-                const productTitle = this.books[index].title; // 取得商品名稱
-                this.books = this.books.filter(book => book.title !== productTitle); // 刪除所有相同商品
-                this.saveToStorage(); // 更新 localStorage
-                alert(`已刪除商品：${productTitle}`);
-                this.initializeCart(); // 重新渲染購物車
-            },
-
-            updateTotals() {
-                let totalItems = 0;
-                let totalPrice = 0;
-
-                this.books.forEach(book => {
-                    totalItems += book.quantity;
-                    totalPrice += book.price * book.quantity;
-                });
-
-                document.getElementById('total-items').textContent = `共 ${this.books.length} 項商品，數量 ${totalItems} 個`;
-                document.getElementById('total-price').innerHTML = `金額總計：<span style="color: #ff6b6b;">NT$${totalPrice}</span>`;
-            },
-
-            saveToStorage() {
-                localStorage.setItem('cartBooks', JSON.stringify(this.books));
-            },
-        };
-
-        // 初始化購物車
-        cart.initializeCart();
-
-        function confirmPurchase() {
-            // 顯示成功訂購的彈窗
-            alert("成功訂購！");
-            
-            // 清空購物車
-            cart.books = [];
-            cart.saveToStorage(); // 更新 localStorage
-            
-            // 重新渲染購物車為空
-            cart.initializeCart();
-        }
-
-        function goBack() {
-            // 返回首頁
-            window.location.href = "index.html";
-        }
-    </script>
-</body>
-</html>
+            function goBack() {
+                // 返回首頁
+                window.location.href = "index.html";
+            }
+        </script>
+    </body>
+    </html>
